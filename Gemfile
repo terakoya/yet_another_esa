@@ -3,12 +3,14 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.6'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
+gem 'gon'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier'
 gem 'turbolinks'
 gem 'rails-assets-bootstrap'
+gem 'rails-assets-knockout'
 gem 'slim-rails'
 gem 'sqlite3'
 gem 'qiita-markdown'
@@ -33,4 +35,3 @@ group :test do
   gem "poltergeist"
   gem 'rspec-rails', group: :development
 end
-

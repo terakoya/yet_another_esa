@@ -19,6 +19,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    gon.preview = @article.to_html.to_s
+    gon.form_data = @article.body
   end
 
   # POST /articles
@@ -62,7 +64,7 @@ class ArticlesController < ApplicationController
   end
 
   def preview
-    render json: { message: "invalid params" }, status: 406 unless params[:markdown]
+    render json: { message: "invalid params" }, status: 406 and return unless params[:markdown]
     processor = Qiita::Markdown::Processor.new
     render json: { html: processor.call(params[:markdown])[:output].to_s }
   end

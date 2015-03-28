@@ -1,3 +1,17 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+class Previewer
+  constructor: (gon) ->
+    @preview = ko.observable gon.preview
+    @formData = ko.observable gon.form_data
+
+    @previewfunc = ko.computed =>
+      @html = null
+      $.ajax
+        type: "POST"
+        url: "/articles/preview"
+        data: { markdown: @formData() }
+      .done (responce) =>
+        console.log responce.html
+        @preview(responce.html)
+
+$ ->
+  ko.applyBindings new Previewer(gon)

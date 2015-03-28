@@ -5,7 +5,7 @@ p
   = @article.title
 p
   strong Body:
-  = @article.body
+  == @article.to_html
 
 = link_to 'Edit', edit_article_path(@article)
 '|

@@ -61,6 +61,16 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # POST /articles/markdown
+  def markdown
+    processor = Qiita::Markdown::Processor.new
+    result = processor.call(params[:markdown])
+
+    respond_to do |format|
+      format.json { render json: { html: result[:output].to_s } }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article

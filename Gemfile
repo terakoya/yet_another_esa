@@ -10,6 +10,7 @@ gem 'uglifier'
 gem 'turbolinks'
 gem 'slim-rails'
 gem 'sqlite3'
+gem 'qiita-markdown'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

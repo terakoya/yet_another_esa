@@ -61,6 +61,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def preview
+    render json: { message: "invalid params" }, status: 406 unless params[:markdown]
+    processor = Qiita::Markdown::Processor.new
+    render json: { html: processor.call(params[:markdown])[:output].to_s }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
